@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} View {% endblock %}
+
+{% block body %}
+
+<section class="reader">
+      
+    <center>
+      <object data="{{url_for()}}" width="800" height="500">
+      </object>
+    </center>      
+
+</section>
+
+{% endblock %}

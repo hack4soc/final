@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %} Your Dashboard {% endblock %}
+
+{% block body %}
+
+<div class="clear-space ">
+  <!-- Top section -->
+  <!-- <section class="global-banner"> -->
+
+
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h3 class="display-5">Where you left :</h3>
+    <!-- beginning of new section -->
+    <section>
+      <div class="container">
+        <div class="card-deck mb-3 text-center">
+
+
+          <div class="card mb-4 box-shadow">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">{{ book.name }}</h4>
+              <a href="{{ book.link }}" target="_blank"> Get the PDF here</a>
+            </div>
+            <div class="card-body">
+              <img src="{{ book.image }}" alt="bookseen" class="card-title pricing-card-title" style="width:240px;">
+              <ul class="list-unstyled mt-3 mb-4">
+                <li><strong><em>Author : {{ book.author }}</em></strong></li>
+                <li>Brief Description:</li>
+                <li>{{ book.description }}</li>
+              </ul>
+
+            </div>
+          </div>
+          <br>
+          <hr>
+          
+
+
+
+
+        </div>
+      </div>
+      <a href="{{ url_for('hist_display') }}" class="button button--small"
+        style="background-color: #030f27; color: rgb(255, 255, 255); cursor:pointer"
+        onmouseover="this.style.color='#EAF6F6'" onmouseout="this.style.color='#FFFFFF'" rel="noopener noreferrer">
+        <span>Find all the books you've read here&nbsp;<i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+      <br>
+      <div>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSer8zEx6OTlr1xWX6fTQcCRsAEzVnwFAcD-PuWGrg_u95WcjQ/viewform?embedded=true" width="640" height="2318" frameborder="0" marginheight="0" marginwidth="0">
+          Loading…</iframe>
+      </div>
+      <!-- <form action="https://docs.google.com/forms/d/e/1FAIpQLSer8zEx6OTlr1xWX6fTQcCRsAEzVnwFAcD-PuWGrg_u95WcjQ/viewform?usp=sf_link">
+
+      </form> -->
+    </section>
+
+  </div>
+</div>
+{% endblock %}

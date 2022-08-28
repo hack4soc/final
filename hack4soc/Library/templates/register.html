@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %} Login {% endblock %}
+{% block head %}
+<style>
+  body{
+    background-color: #CBDAF3;
+  }
+</style>
+{% endblock %}
+
+
+{%block body%}
+<div id="the-main">
+<section class="global-banner">
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <h3 class="mb-6">Create an Account</h3>
+
+            <form method="POST">
+              {{ form.hidden_tag() }}
+              <div class="form-outline mb-4">
+                {{ form.username.label(class='form-label')}}
+                {{ form.username(class="form-control form-control-lg", placeholder="Enter Username", autocomplete="off")
+                }}
+
+                {% for error in form.username.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+              </div>
+
+              <div class="form-outline mb-4">
+                {{ form.password1.label(class = "form-label") }}
+                {{ form.password1(class="form-control form-control-lg", placeholder="Enter Password")}}
+
+                {% for error in form.password1.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+              </div>
+
+              <div class="form-outline mb-4">
+                {{ form.password2.label(class = "form-label") }}
+                {{ form.password2(class="form-control form-control-lg", placeholder="Confirm Password")}}
+
+                {% for error in form.password2.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+              </div>
+
+
+              <button class="btn btn-primary btn-lg btn-block" type="submit">
+                {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+              </button>
+
+            </form>
+
+            <hr class="my-4">
+            <h3><a href="{{ url_for('login1') }}">Already have an account?</a></h3>
+            <hr class="my-4">
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</section>
+</div>
+
+{% endblock %}

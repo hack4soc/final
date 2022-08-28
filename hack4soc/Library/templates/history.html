@@ -1,0 +1,1058 @@
+{% extends 'base.html' %}
+
+{% block title %} Recommendation {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css"
+    integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Tangerine:wght@700&display=swap"
+    rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Fredericka+the+Great&display=swap"
+    rel="stylesheet">
+
+<style>
+    body {
+        height: 1600px;
+        padding: 100px;
+    }
+
+    .h1 {
+        margin-top: 1000px;
+        color: gray;
+        background-color: rgb(37, 190, 37);
+        padding-bottom: 200px;
+    }
+
+    .header-margin {
+        padding-bottom: 20px;
+    }
+
+    div {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+
+    .header-row {
+        display: flex;
+        flex-direction: row;
+        background: linear-gradient(-60deg,
+                transparent,
+                #72a043a1 14%,
+                #72a043bd 28%,
+                #72a043c9 42%,
+                #72a043cf 56%,
+                #72a043b8 70%,
+                #72a043a8 84%,
+                rgb(0 0 0 / 5%));
+
+        justify-content: space-between;
+        height: 62px;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: rgb(232, 232, 232);
+        box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.05);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+    }
+
+    .left-icons {
+        display: flex;
+        width: 300px;
+        margin-left: 60px;
+        align-items: center;
+    }
+
+    .middle-icons {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1000px;
+    }
+
+    .right-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        margin-left: 60px;
+    }
+
+    .logo-top {
+        height: 40px;
+        margin-top: 3px;
+        margin-bottom: 4px;
+        border-radius: 10px;
+    }
+
+    button {
+        font-size: 20px;
+        margin: 15px;
+        background-color: transparent;
+        border: none;
+        margin-left: 50px;
+    }
+
+    .profile-icon {
+        height: 40px;
+        border-radius: 100%;
+        margin-right: 30px;
+    }
+
+    .main-seg {
+        background-color: aquamarine;
+        padding: 20px;
+        border-radius: 20px;
+        margin-top: 40px;
+    }
+
+    .sec-style1 {
+        border-radius: 10px;
+    }
+
+    .end-bar {
+        display: flex;
+        background-color: rgb(219, 223, 227);
+        margin-left: 0px;
+        height: 120px;
+        color: white;
+        justify-content: center;
+        margin-bottom: none;
+    }
+
+    .section-1 {
+        padding: 20px;
+        margin-left: 100px;
+        margin-right: 100px;
+        margin-top: 50px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .section-2 {
+        padding-bottom: 20px;
+        margin-left: 100px;
+        margin-right: 100px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .section-3 {
+        padding-bottom: 20px;
+        margin-left: 100px;
+        margin-right: 100px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .oval-shape {
+        background-color: rgb(49, 69, 89);
+        height: 50px;
+        background-color: rgb(219, 223, 227);
+        border-radius: 40% / 100% 100% 0 0;
+        margin-top: 80px;
+    }
+
+    .head-1 {
+        color: purple;
+        font-style: tangerine;
+        font-family: 'Fredericka the Great', cursive;
+        text-align: center;
+        font-weight: 700;
+        font-size: 100px;
+    }
+
+    .end-center-left {
+        text-align: center;
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    .end-center-right {
+        display: inline-block;
+        text-align: start;
+    }
+
+    .icons {
+        display: flex;
+        background-color: rgb(219, 223, 227);
+        padding-bottom: 30px;
+        justify-content: center;
+        margin-top: none;
+    }
+
+    /* img {
+        height: 70px;
+        padding: 5px;
+        margin: 15px;
+        border-radius: 100%;
+        margin-top: none;
+      } */
+
+    .img-1 {
+        height: 70px;
+        padding: 5px;
+        margin: 15px;
+        border-radius: 100%;
+        margin-top: none;
+    }
+
+    .img-2 {
+        height: 70px;
+        padding: 5px;
+        margin: 15px;
+        border-radius: 100%;
+        margin-top: none;
+    }
+
+    .img-3 {
+        height: 70px;
+        padding: 5px;
+        margin: 15px;
+        border-radius: 100%;
+        margin-top: none;
+    }
+
+    .img-4 {
+        height: 70px;
+        padding: 5px;
+        margin: 15px;
+        border-radius: 100%;
+        margin-top: none;
+    }
+
+    .bg-bottom {
+        background-color: rgb(219, 223, 227);
+    }
+
+    h6 {
+        color: rgb(192, 181, 181);
+        display: inline-block;
+    }
+
+    .buy-sell-button {
+        display: flex;
+        align-items: center;
+        font-size: 0px;
+        justify-content: space-between;
+    }
+
+    .buy-button {
+        background-color: red;
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+        margin-right: 0px;
+        border: none;
+        color: white;
+        margin-left: 3px;
+    }
+
+    .sell-button {
+        background-color: green;
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+        margin-left: 0px;
+        border: none;
+        color: white;
+        margin-right: 0px;
+    }
+
+    .upper-btn {
+        margin-top: 5px;
+        padding: none;
+        display: flex;
+        align-items: center;
+        font-size: 0px;
+        justify-content: space-between;
+    }
+
+    h5 {
+        font-size: 1.45rem;
+    }
+
+    h4 {
+        font-family: 'Courier Prime', monospace;
+        font-weight: bold;
+    }
+
+    body {
+        height: 1600px;
+        padding: 100px;
+    }
+
+    body .h1 {
+        margin-top: 1000px;
+        color: gray;
+        background-color: rgb(37, 190, 37);
+        padding-bottom: 200px;
+    }
+
+    body .header-margin {
+        padding-bottom: 20px;
+    }
+
+    body div {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+
+
+
+
+
+    .item img {
+        height: 280px;
+
+    }
+
+    body {
+        background-color: rgb(253, 255, 254);
+        background-image: url("Images/new253.jpg")
+    }
+
+    .owl-item{
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translateZ(0) scale(1.0, 1.0);
+    }
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+<section id="resize-sec1" class="section-1">
+    <div class="container-fluid my-3 ">
+        <div class="head-1">Dataset of Books</div>
+        <div id="resize-main" class="main-seg ">
+            <div>
+                <h3 class="text-secondary">Action and Adventure</h3>
+            </div>
+            <div class="row mt-5">
+                <div class="owl-carousel owl-theme">
+
+
+
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...1</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Deathy Hallows</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://kbimages1-a.akamaihd.net/265498db-16c5-421a-b481-e0f4a99e6a74/353/569/90/False/the-diary-of-a-young-girl-27.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...2</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...3</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...4</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...5</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...6</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>..7.</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>..8.</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>..9.</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+</section>
+
+<section id="resize-sec2" class="section-2">
+
+
+    <div class="container-fluid my-3">
+        <div class="main-seg ">
+            <div>
+                <h3 class="text-secondary">Biographies and Auto-biographics</h3>
+            </div>
+            <div class="row mt-5">
+                <div class="owl-carousel owl-theme">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="resize-sec3" class="section-3">
+
+
+    <div class="container-fluid my-3">
+        <div class="main-seg ">
+            <div>
+                <h3 class="text-secondary">Comics</h3>
+            </div>
+
+            <div class="row mt-5">
+                <div class="owl-carousel owl-theme">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="resize-sec3" class="section-3">
+    <div class="container-fluid my-3">
+        <div class="main-seg ">
+            <div>
+                <h3 class="text-secondary">Detective and mistery</h3>
+            </div>
+
+            <div class="row mt-5">
+                <div class="owl-carousel owl-theme">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="resize-sec3" class="section-2">
+
+
+    <div class="container-fluid my-3">
+        <div class="main-seg ">
+            <div>
+                <h3 class="text-secondary">Fantasy</h3>
+            </div>
+
+            <div class="row mt-5">
+                <div class="owl-carousel owl-theme">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="resize-sec3" class="section-1">
+
+
+    <div class="container-fluid my-3">
+        <div class="main-seg ">
+            <div>
+                <h3 class="text-secondary">Sci-Fy</h3>
+            </div>
+
+            <div class="row mt-5">
+                <div class="owl-carousel owl-theme">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Harry Potter and the Chamber of Secrets</h4>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865681l/25076674._SY475_.jpg"
+                                alt="the alchemist" class="card-title pricing-card-title" style="width:240px;">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><strong><em>Author : J.K. Rowling</em></strong></li>
+                                <li>Breif Discription:</li>
+                                <li>...10</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Assign to
+                                Student</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+{% block endd %}
+<script type="text/javascript">
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            },
+            1400: {
+                items: 4
+            }
+        }
+    })
+</script>
+<script type="text/javascript">
+    "use strict";
+    let resize = document.getElementById("resize-sec1");
+    let resize1 = document.getElementById("resize-sec2");
+    let resize2 = document.getElementById("resize-sec3");
+    window.onresize = function () {
+        if (window.innerWidth <= 1000) {
+            resize.style =
+                "padding: 20px;margin-left: 20px;margin-right: 20px;margin-top: 50px;padding-left: 50px;padding-right: 50px;";
+            resize1.style =
+                "padding: 20px;margin-left: 20px;margin-right: 20px;margin-top: 50px;padding-left: 50px;padding-right: 50px;";
+            resize2.style =
+                "padding: 20px;margin-left: 20px;margin-right: 20px;margin-top: 50px;padding-left: 50px;padding-right: 50px;";
+        } else {
+            resize.style =
+                "padding: 20px;margin-left: 100px;margin-right: 100px;margin-top: 50px;padding-left: 50px;padding-right: 50px;";
+            resize1.style =
+                "padding: 20px;margin-left: 100px;margin-right: 100px;margin-top: 50px;padding-left: 50px;padding-right: 50px;";
+            resize2.style =
+                "padding: 20px;margin-left: 100px;margin-right: 100px;margin-top: 50px;padding-left: 50px;padding-right: 50px;";
+        }
+    };
+    console.log(window.innerWidth);
+</script>
+
+{% endblock %}
